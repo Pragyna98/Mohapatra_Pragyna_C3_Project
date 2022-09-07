@@ -77,12 +77,15 @@ class RestaurantServiceTest {
 
 
     //<<<<<<<<<<<<<<<<<<<<Calculating Ordered item price>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     @Test
-    public void add_ordered_items_should_calculate_correct_ordered_value()
-    {
-        List<String> itemsToOrder= new ArrayList<>(Arrays.asList("Fried Chickene","Noodles"));
+
+    public void add_ordered_items_should_calculate_correct_ordered_value() throws restaurantNotFoundException {
+
+        List<String> itemsToOrder= new ArrayList<>(Arrays.asList("Fried Chicken","Noodles"));
         int orderValue=service.calculateOrder(restaurant.getName(),itemsToOrder);
         assertEquals(orderValue,348);
     }
+
     //<<<<<<<<<<<<<<<<<<<<Calculating Ordered item price>>>>>>>>>>>>>>>>>>>>>>>>>>
 }

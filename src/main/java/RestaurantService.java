@@ -2,9 +2,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class RestaurantService {
-    private static  List<Restaurant> restaurants = new ArrayList<>();
+    private static List<Restaurant> restaurants = new ArrayList<>();
 
     public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
 
@@ -38,8 +37,18 @@ public class RestaurantService {
 
         return restaurants;
     }
-    public int calculateOrder(String restaurantName,List<String>orderedItems){
 
-        return 0;
-    }
+
+    public  int calculateOrder(String restaurantName,List<String> orderedItems) throws restaurantNotFoundException{
+            Restaurant res=findRestaurantByName(restaurantName);
+            int orderValue=0;
+            for(Item item : res.getMenu())
+            {
+                if(orderedItems.contains(item.getName())) {
+                    orderValue += item.getPrice();
+                }
+            }
+            return orderValue;
+        }
+
 }
